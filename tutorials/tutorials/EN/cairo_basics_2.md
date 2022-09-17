@@ -57,8 +57,8 @@ The interaction between the `builtin` `output` and the `serialize_word` function
 
 Cairo is built on top of Python so importing functions and variables is exactly the same. The from `starkware.cairo.common.serialize import serialize_word line` is importing the `serialize_word` function found in `starkware.cairo.common.serialize`. To see the source code of this function, just go to the `cairo-lang` Github repository ([link](https://github.com/starkware-libs/cairo-lang)). For example, the serialize function is located [here](https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/cairo/common/serialize.cairo) inside the repository. This will be useful for finding bugs in the code or understanding Cairo more thoroughly.
 
-> Multiple functions from the same library can be separated by commas. Functions from different libraries are imported on different lines. Cairo looks for each module in a default directory path and any additional paths specified at compile time (Cairo [documentation)](https://www.cairo-lang.org/docs/reference/syntax.html#library-imports).
-> 
+> Multiple functions from the same library can be separated by commas. Functions from different libraries are imported on different lines. Cairo looks for each module in a default directory path and any additional paths specified at compile time (Cairo [documentation](https://www.cairo-lang.org/docs/reference/syntax.html#library-imports)).
+>
 
 This is how multiple functions are imported from the same library: `from starkware.cairo.common.math import (assert_not_zero, assert_not_equal)`.
 
