@@ -44,13 +44,12 @@ func main{output_ptr: felt*}():
 end
 ```
 
-## ****2. Los builtins****
+## ****2. Builtins****
 
 At the beginning of our program in Cairo we write `%builtins output`. Here we are telling the Cairo compiler that we will use the `builtin` called `output`. The builtin definition is quite technical and out of the scope of this first tutorial ([here it is](https://www.cairo-lang.org/docs/how_cairo_works/builtins.html#builtins) in the documentation). For now, it suffices for us to point out that we can summon Cairo's special abilities through the builtins. If you know C++ surely you already found the similarities.
 
-> El `builtin` `output` es lo que permite que el programa se comunique con el mundo exterior. Puedes considerarlo como el equivalente de `print()`
- en Python o `std::cout`de C++ ([documentación](https://www.cairo-lang.org/docs/hello_cairo/intro.html#writing-a-main-function) de Cairo).
-> 
+> The `output` `builtin` is what allows the program to communicate with the external world. You can think of it as the equivalent of Python’s print() or C++’s std::cout.  (Cairo [documentation](https://www.cairo-lang.org/docs/hello_cairo/intro.html#writing-a-main-function)).
+>
 
 The interaction between the `builtin` `output` and the `serialize_word` function, which we imported earlier, will allow us to print to the console. In this case with `serialize_word(sum)`. Don't worry, we'll take a closer look at it later.
 
@@ -58,8 +57,8 @@ The interaction between the `builtin` `output` and the `serialize_word` function
 
 Cairo is built on top of Python so importing functions and variables is exactly the same. The from `starkware.cairo.common.serialize import serialize_word line` is importing the `serialize_word` function found in `starkware.cairo.common.serialize`. To see the source code of this function, just go to the `cairo-lang` Github repository ([link](https://github.com/starkware-libs/cairo-lang)). For example, the serialize function is located [here](https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/cairo/common/serialize.cairo) inside the repository. This will be useful for finding bugs in the code or understanding Cairo more thoroughly.
 
-> Multiple functions from the same library can be separated by commas. Functions from different libraries are imported on different lines. Cairo looks for each module in a default directory path and any additional paths specified at compile time (Cairo [documentation)](https://www.cairo-lang.org/docs/reference/syntax.html#library-imports).
-> 
+> Multiple functions from the same library can be separated by commas. Functions from different libraries are imported on different lines. Cairo looks for each module in a default directory path and any additional paths specified at compile time (Cairo [documentation](https://www.cairo-lang.org/docs/reference/syntax.html#library-imports)).
+>
 
 This is how multiple functions are imported from the same library: `from starkware.cairo.common.math import (assert_not_zero, assert_not_equal)`.
 
@@ -93,8 +92,8 @@ With `Name.first_member` we can access the value of this argument, in this case 
 
 Tuples in Cairo are pretty much the same as tuples in Python:
 
-> A tuple is a finite, ordered, unalterable list of elements. It is represented as a comma-separated list of elements enclosed in parentheses (for example, `(3, x)`). Its elements can be of any combination of valid types. A tuple containing only one element must be defined in one of two ways: the element is a named tuple or it has a trailing comma. When passing a tuple as an argument, the type of each element can be specified per element (for example, `my_tuple : (felt, felt, MyStruct)`). Tuple values can be accessed with a zero-based index in parentheses `[index]`, including access to nested tuple elements as shown below (Cairo [documentation](https://www.cairo-lang.org/docs/reference/syntax.html#tuples)).
-> 
+> A tuple is a finite, ordered, unalterable list of elements. It is represented as a comma-separated list of elements enclosed in parentheses (for example, `(3, x)`). Its elements can be of any combination of valid types. A tuple containing only one element must be defined in one of two ways: the element is a named tuple or it has a trailing comma. When passing a tuple as an argument, the type of each element can be specified per element (for example, `my_tuple : (felt, felt, MyStruct)`). Tuple values can be accessed with a zero-based index in square brackets `[index]`, including access to nested tuple elements as shown below (Cairo [documentation](https://www.cairo-lang.org/docs/reference/syntax.html#tuples)).
+>
 
 The Cairo documentation is very clear in its definition of tuples. Here your example:
 
@@ -120,14 +119,14 @@ The definition of a function in Cairo has the following format:
 
 ```python
 func función(arg1: felt, arg2) -> (returned):
-  # function body 
+  # function body
   return(returned)
 end
 ```
 
 - **Define the scope of the function.** We start the function with `func` and end it with `end`. This defines the scope of our function called `function`.
 - **Arguments and names**. We define the arguments that the function receives in parentheses next to the name that we define for our function, `function` in this case. The arguments can carry their type defined or not. In this case `arg1` must be of type felt and `arg2` can be of any type.
-- **Return**. We necessarily have to add `return()`. Although the function is not returning something. In this case we are returning a variable called `returned` so we put `return(returned)`. Even if we didn't return anything we would have to add `return()`.
+- **Return**. We necessarily have to add `return()`, even if the function is returns nothing. In this case we are returning a variable called `returned` so we put `return(returned)`. Even if we didn't return anything we would have to add `return()`.
 - **Comments**. In Cairo we comment with `#`. This code will not be interpreted when running our program.
 
 As with other programming languages. We will need a `main()` function that orchestrates the use of our program in Cairo. It is defined exactly the same as a normal function only with the name `main()`. It can come before or after the other functions we create in our program.
