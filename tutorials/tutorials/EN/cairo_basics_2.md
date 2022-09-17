@@ -44,13 +44,12 @@ func main{output_ptr: felt*}():
 end
 ```
 
-## ****2. Los builtins****
+## ****2. Builtins****
 
 At the beginning of our program in Cairo we write `%builtins output`. Here we are telling the Cairo compiler that we will use the `builtin` called `output`. The builtin definition is quite technical and out of the scope of this first tutorial ([here it is](https://www.cairo-lang.org/docs/how_cairo_works/builtins.html#builtins) in the documentation). For now, it suffices for us to point out that we can summon Cairo's special abilities through the builtins. If you know C++ surely you already found the similarities.
 
-> El `builtin` `output` es lo que permite que el programa se comunique con el mundo exterior. Puedes considerarlo como el equivalente de `print()`
- en Python o `std::cout`de C++ ([documentación](https://www.cairo-lang.org/docs/hello_cairo/intro.html#writing-a-main-function) de Cairo).
-> 
+> The `output` `builtin` is what allows the program to communicate with the external world. You can think of it as the equivalent of Python’s print() or C++’s std::cout.  (Cairo [documentation](https://www.cairo-lang.org/docs/hello_cairo/intro.html#writing-a-main-function)).
+>
 
 The interaction between the `builtin` `output` and the `serialize_word` function, which we imported earlier, will allow us to print to the console. In this case with `serialize_word(sum)`. Don't worry, we'll take a closer look at it later.
 
