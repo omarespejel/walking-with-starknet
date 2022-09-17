@@ -92,8 +92,8 @@ With `Name.first_member` we can access the value of this argument, in this case 
 
 Tuples in Cairo are pretty much the same as tuples in Python:
 
-> A tuple is a finite, ordered, unalterable list of elements. It is represented as a comma-separated list of elements enclosed in parentheses (for example, `(3, x)`). Its elements can be of any combination of valid types. A tuple containing only one element must be defined in one of two ways: the element is a named tuple or it has a trailing comma. When passing a tuple as an argument, the type of each element can be specified per element (for example, `my_tuple : (felt, felt, MyStruct)`). Tuple values can be accessed with a zero-based index in parentheses `[index]`, including access to nested tuple elements as shown below (Cairo [documentation](https://www.cairo-lang.org/docs/reference/syntax.html#tuples)).
-> 
+> A tuple is a finite, ordered, unalterable list of elements. It is represented as a comma-separated list of elements enclosed in parentheses (for example, `(3, x)`). Its elements can be of any combination of valid types. A tuple containing only one element must be defined in one of two ways: the element is a named tuple or it has a trailing comma. When passing a tuple as an argument, the type of each element can be specified per element (for example, `my_tuple : (felt, felt, MyStruct)`). Tuple values can be accessed with a zero-based index in square brackets `[index]`, including access to nested tuple elements as shown below (Cairo [documentation](https://www.cairo-lang.org/docs/reference/syntax.html#tuples)).
+>
 
 The Cairo documentation is very clear in its definition of tuples. Here your example:
 
@@ -119,14 +119,14 @@ The definition of a function in Cairo has the following format:
 
 ```python
 func función(arg1: felt, arg2) -> (returned):
-  # function body 
+  # function body
   return(returned)
 end
 ```
 
 - **Define the scope of the function.** We start the function with `func` and end it with `end`. This defines the scope of our function called `function`.
 - **Arguments and names**. We define the arguments that the function receives in parentheses next to the name that we define for our function, `function` in this case. The arguments can carry their type defined or not. In this case `arg1` must be of type felt and `arg2` can be of any type.
-- **Return**. We necessarily have to add `return()`. Although the function is not returning something. In this case we are returning a variable called `returned` so we put `return(returned)`. Even if we didn't return anything we would have to add `return()`.
+- **Return**. We necessarily have to add `return()`, even if the function is returns nothing. In this case we are returning a variable called `returned` so we put `return(returned)`. Even if we didn't return anything we would have to add `return()`.
 - **Comments**. In Cairo we comment with `#`. This code will not be interpreted when running our program.
 
 As with other programming languages. We will need a `main()` function that orchestrates the use of our program in Cairo. It is defined exactly the same as a normal function only with the name `main()`. It can come before or after the other functions we create in our program.
